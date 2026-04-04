@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>Tic Tac Toe</h1>
+    <p class="subtitle">First to 3 in a row wins</p>
+
+    <div class="mode-row">
+      <button class="mode-btn active" id="btn-2p" onclick="setMode('2p')">👥 2 Players</button>
+      <button class="mode-btn" id="btn-ai" onclick="setMode('ai')">🤖 vs CPU</button>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score-box x-box">
+        <div class="score-label" id="label-x">Player X</div>
+        <div class="score-num" id="score-x">0</div>
+      </div>
+      <div class="score-box d-box">
+        <div class="score-label">Draws</div>
+        <div class="score-num" id="score-d">0</div>
+      </div>
+      <div class="score-box o-box">
+        <div class="score-label" id="label-o">Player O</div>
+        <div class="score-num" id="score-o">0</div>
+      </div>
+    </div>
+
+    <div class="status" id="status">Player X's turn</div>
+
+    <div class="board" id="board">
+      <div class="cell" data-i="0"></div>
+      <div class="cell" data-i="1"></div>
+      <div class="cell" data-i="2"></div>
+      <div class="cell" data-i="3"></div>
+      <div class="cell" data-i="4"></div>
+      <div class="cell" data-i="5"></div>
+      <div class="cell" data-i="6"></div>
+      <div class="cell" data-i="7"></div>
+      <div class="cell" data-i="8"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="resetRound()">▶ New Game</button>
+      <button class="btn btn-secondary" onclick="resetAll()">↺ Reset</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
