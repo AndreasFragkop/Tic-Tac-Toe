@@ -6,10 +6,19 @@ A browser-based Tic-Tac-Toe game with local multiplayer, a CPU opponent, and a m
 
 ## Project Structure
 
-- `index.html` - page structure and game interface
-- `styles.css` - layout, theme, and responsive styling
-- `script.js` - game logic, scoring, turn handling, and CPU behavior
-- `README.md` - project documentation
+```text
+Tic-Tac-Toe/
+├── index.html    # Page structure and script loading
+├── styles.css    # Layout, theme, and responsive styling
+├── js/           # Game scripts
+│   ├── config.js # Constants and win patterns
+│   ├── state.js  # Shared state and DOM references
+│   ├── ui.js     # UI update helpers
+│   ├── ai.js     # CPU move selection logic
+│   └── game.js   # Main gameplay flow and events
+├── README.md     # Project documentation
+└── images/       # Screenshots and README assets
+```
 
 ## Run
 
@@ -48,12 +57,11 @@ No package installation is required.
 
 The game runs fully in the browser using HTML, CSS, and JavaScript.
 
-- `script.js` stores the board as an array of 9 cells.
-- Each click places `X` or `O` in the selected square.
-- The game checks winning combinations after every move.
-- Scores are tracked for `X`, `O`, and draws.
-- In `vs CPU` mode, the CPU plays as `O`.
-- The CPU uses a minimax-style function to choose strong moves locally.
+- `state.js` stores the board, scores, current player, and DOM references.
+- `ui.js` updates the board, status text, mode state, and scoreboard.
+- `game.js` handles turns, win detection, resets, and click events.
+- `ai.js` calculates CPU moves using a minimax-style scoring function.
+- In `vs CPU` mode, the CPU plays as `O` after the human move.
 
 ## Features
 
@@ -89,12 +97,3 @@ Everything runs locally in the browser.
 - add a move history or round history
 - improve accessibility
 - add theme switching
-
-## Notes
-
-- If style changes do not appear immediately, refresh the page.
-- If port `8080` is busy, you can use another port such as `3000`:
-
-```bash
-python3 -m http.server 3000
-```
