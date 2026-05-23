@@ -4,57 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tic Tac Toe</title>
+  <!-- ?v=wood3 forces browsers to reload the stylesheet after the wood theme redesign -->
   <link rel="stylesheet" href="styles.css?v=wood3" />
 </head>
 <body>
+
+  <!-- ── Main card ──────────────────────────────────────────────────────────
+       Single centred container that wraps all game UI.
+       Styled as a transparent wrapper in CSS; the board and scoreboard
+       provide their own visual surfaces.                                   -->
   <div class="card">
+
     <h1>Tic Tac Toe</h1>
     <p class="subtitle">First to 3 in a row wins</p>
 
+    <!-- ── Mode selector ───────────────────────────────────────────────────
+         Two toggle buttons switch between local 2-player and vs-CPU modes.
+         onclick calls setMode() in game.js with the matching mode constant.
+         The 'active' class is managed by updateModeUI() in ui.js.          -->
     <div class="mode-row">
       <button class="mode-btn active" id="btn-2p" onclick="setMode('2p')">👥 2 Players</button>
-      <button class="mode-btn" id="btn-ai" onclick="setMode('ai')">🤖 vs CPU</button>
+      <button class="mode-btn"        id="btn-ai" onclick="setMode('ai')">🤖 vs CPU</button>
     </div>
 
+    <!-- ── Scoreboard ──────────────────────────────────────────────────────
+         Three equal-width panels showing cumulative wins and draws.
+         Score numbers are updated by updateScoresUI() in ui.js.
+         The label-o span is also updated by updateModeUI() to show
+         "🤖 CPU" when CPU mode is active.                                  -->
     <div class="scoreboard">
+
+      <!-- X wins -->
       <div class="score-box x-box">
         <div class="score-label" id="label-x">Player X</div>
-        <div class="score-num" id="score-x">0</div>
+        <div class="score-num"   id="score-x">0</div>
       </div>
+
+      <!-- Draws -->
       <div class="score-box d-box">
         <div class="score-label">Draws</div>
         <div class="score-num" id="score-d">0</div>
       </div>
+
+      <!-- O wins (label changes to "🤖 CPU" in CPU mode) -->
       <div class="score-box o-box">
         <div class="score-label" id="label-o">Player O</div>
-        <div class="score-num" id="score-o">0</div>
+        <div class="score-num"   id="score-o">0</div>
       </div>
-    </div>
 
+    </div><!-- /scoreboard -->
+
+    <!-- ── Status bar ──────────────────────────────────────────────────────
+         Single line updated by setStatus() in ui.js to show whose turn it
+         is, "CPU thinking…", the winner, or "It's a draw!".               -->
     <div class="status" id="status">Player X's turn</div>
 
+    <!-- ── Board ───────────────────────────────────────────────────────────
+         3×3 CSS grid. A single delegated click listener on #board (added
+         in game.js) routes clicks to the correct cell via event.target.closest('.cell').
+         data-i stores the cell index (0–8) used by playMove() in game.js.  -->
     <div class="board" id="board">
-      <div class="cell" data-i="0"></div>
-      <div class="cell" data-i="1"></div>
-      <div class="cell" data-i="2"></div>
-      <div class="cell" data-i="3"></div>
-      <div class="cell" data-i="4"></div>
-      <div class="cell" data-i="5"></div>
-      <div class="cell" data-i="6"></div>
-      <div class="cell" data-i="7"></div>
-      <div class="cell" data-i="8"></div>
-    </div>
+      <div class="cell" data-i="0"></div><!-- row 0, col 0 -->
+      <div class="cell" data-i="1"></div><!-- row 0, col 1 -->
+      <div class="cell" data-i="2"></div><!-- row 0, col 2 -->
+      <div class="cell" data-i="3"></div><!-- row 1, col 0 -->
+      <div class="cell" data-i="4"></div><!-- row 1, col 1 (center) -->
+      <div class="cell" data-i="5"></div><!-- row 1, col 2 -->
+      <div class="cell" data-i="6"></div><!-- row 2, col 0 -->
+      <div class="cell" data-i="7"></div><!-- row 2, col 1 -->
+      <div class="cell" data-i="8"></div><!-- row 2, col 2 -->
+    </div><!-- /board -->
 
+    <!-- ── Action buttons ──────────────────────────────────────────────────
+         New Game — resets the board but keeps the current scores.
+         Reset    — zeros the scoreboard and starts a fresh round.           -->
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="resetRound()">▶ New Game</button>
+      <button class="btn btn-primary"   onclick="resetRound()">▶ New Game</button>
       <button class="btn btn-secondary" onclick="resetAll()">↺ Reset</button>
     </div>
-  </div>
 
+  </div><!-- /card -->
+
+  <!-- ── Scripts ─────────────────────────────────────────────────────────────
+       Loaded at the bottom of <body> so all DOM elements exist before the
+       scripts run. Order matters: each file depends on the ones above it.
+
+         config.js — constants and WINS array (no dependencies)
+         state.js  — DOM refs and mutable state (needs config.js)
+         ui.js     — DOM update helpers (needs state.js)
+         ai.js     — minimax CPU logic (needs config.js, state.js, checkWinner from game.js)
+         game.js   — game loop, event listener, public API (needs all above)  -->
   <script src="js/config.js"></script>
   <script src="js/state.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/ai.js"></script>
   <script src="js/game.js"></script>
+
 </body>
 </html>
