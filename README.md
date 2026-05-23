@@ -22,20 +22,15 @@ Tic-Tac-Toe/
 
 ## Run
 
-Start a local server from the project folder:
+1. Open `index.html` directly in your browser.
+
+2. Or run a local server and open the app from localhost:
 
 ```bash
-cd /Users/andreas/Desktop/Coding-Projects/Tic-Tac-Toe
 python3 -m http.server 8080
 ```
 
-Then open:
-
-```text
-http://localhost:8080/index.html
-```
-
-To stop the server, press `Ctrl + C`.
+Then open `http://localhost:8080`.
 
 ## Requirements
 
