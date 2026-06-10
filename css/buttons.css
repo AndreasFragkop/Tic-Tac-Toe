@@ -1,0 +1,84 @@
+/* ─── Mode row ───────────────────────────────────────────────────────────────
+   Flex row holding the "2 Players" and "vs CPU" toggle buttons.              */
+.mode-row {
+  display: flex;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto 18px;
+}
+
+/* ─── Shared button base ─────────────────────────────────────────────────────
+   .mode-btn and .btn share the same parchment gradient, border, and
+   hover-lift transition so both button groups feel visually consistent.      */
+.mode-btn,
+.btn {
+  border: 1px solid rgba(92, 61, 34, 0.28);
+  background: linear-gradient(180deg, #f7efdf 0%, #e8d5b9 100%);
+  color: var(--wood-dark);
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+  box-shadow: 0 8px 18px rgba(92, 61, 34, 0.12);
+}
+
+/* ─── Mode button sizing ─────────────────────────────────────────────────────
+   flex: 1 makes each mode button fill its column equally so neither label
+   gets more visual weight than the other.                                    */
+.mode-btn {
+  flex: 1;
+  padding: 11px 10px;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+
+/* ─── Hover lift ─────────────────────────────────────────────────────────────
+   Subtle upward shift and deeper shadow on hover gives both button groups
+   a tactile, clickable feel.                                                 */
+.mode-btn:hover,
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(92, 61, 34, 0.18);
+}
+
+/* ─── Active mode button ─────────────────────────────────────────────────────
+   The selected mode button switches to the darker wood gradient so the
+   player always knows which mode is currently active.                        */
+.mode-btn.active {
+  background: linear-gradient(180deg, #b87a42 0%, #925826 100%);
+  color: #fff7ec;
+  border-color: rgba(92, 61, 34, 0.38);
+}
+
+/* ─── Action button row ──────────────────────────────────────────────────────
+   "New Game" and "Reset" sit in a centred flex row below the board.         */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ─── Action button sizing ───────────────────────────────────────────────────
+   Fixed min-width keeps both buttons the same visual weight even if one
+   label is shorter than the other.                                           */
+.btn {
+  min-width: 160px;
+  padding: 12px 17px;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+
+/* ─── Primary action ─────────────────────────────────────────────────────────
+   "New Game" uses the active wood gradient to signal it is the main action. */
+.btn-primary {
+  background: linear-gradient(180deg, #b87a42 0%, #8e5426 100%);
+  color: #fff7ec;
+}
+
+/* ─── Secondary action ───────────────────────────────────────────────────────
+   "Reset" uses the lighter parchment tone to draw less attention
+   relative to the primary button.                                            */
+.btn-secondary {
+  background: linear-gradient(180deg, #f6eddc 0%, #e4d1b3 100%);
+}
