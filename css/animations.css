@@ -1,0 +1,14 @@
+/* ─── Keyframes ──────────────────────────────────────────────────────────────*/
+
+/* Mark entrance: scale from near-zero with an overshoot so marks "pop" in.  */
+@keyframes pop {
+  0%   { transform: scale(0.2); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Win pulse: a gentle grow-and-shrink to highlight the winning cells.        */
+@keyframes winpulse {
+  0%   { transform: scale(1);    }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1);    }
+}

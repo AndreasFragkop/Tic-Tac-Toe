@@ -1,0 +1,57 @@
+/* ─── Reset ──────────────────────────────────────────────────────────────────
+   Strip default browser margin, padding, and box model so every element
+   starts from a consistent baseline.                                         */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Page layout ────────────────────────────────────────────────────────────
+   Full-viewport flex container centres the card both vertically and
+   horizontally. The three-layer background creates a warm parchment look:
+     1. White radial highlight at the top-left corner (paper sheen)
+     2. Dark amber radial shadow at the bottom-right corner (depth)
+     3. Warm tan linear gradient as the base tone                             */
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left,  rgba(255, 255, 255, 0.35), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(120, 82, 38, 0.18), transparent 28%),
+    linear-gradient(180deg, var(--page-top) 0%, var(--page-bottom) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  color: var(--text);
+  font-family: "Segoe UI", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────────
+   Transparent wrapper that centres and constrains all content.
+   No background or border — the board and scoreboard provide their own
+   visual surfaces.                                                            */
+.card {
+  width: 100%;
+  max-width: 760px;
+  padding: 20px 22px 22px;
+  text-align: center;
+}
+
+/* ─── Heading ────────────────────────────────────────────────────────────────
+   clamp() gives fluid sizing between small phones and wide screens without
+   a media query just for the title.                                           */
+h1 {
+  margin-bottom: 6px;
+  color: var(--wood-dark);
+  font-family: "Avenir Next", "Century Gothic", "Segoe UI", sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+/* ─── Subtitle ───────────────────────────────────────────────────────────────
+   Small uppercase label directly below the title.                            */
+.subtitle {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
